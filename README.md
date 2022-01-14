@@ -130,3 +130,5 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 - Stateful logic is the behaviors used to change state. Can include a hook or custom hooks
 
 4. What are the three step of creating a successful test? What is done in each phase? 
+
+Arrange:

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import useCheckOutForm from "../hooks/useForm";
 
 const initialValue = {
   firstName: "",
@@ -13,26 +14,12 @@ const initialValue = {
 // Build out the logic needed for a form custom hook (see the useForm.js file)
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
-// const useCheckOutForm () {
-
-// }
 
 const CheckoutForm = (props) => {
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [values, setValues] = useState(initialValue);
-
-  const handleChanges = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setShowSuccessMessage(true);
-  };
 
   return (
     <>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={useCheckOutForm(handleSubmit)}>
         <h2>Checkout Form</h2>
         <label>
           First Name:
@@ -47,7 +34,7 @@ const CheckoutForm = (props) => {
           <input
             name="lastName"
             value={values.lastName}
-            onChange={handleChanges}
+            onChange={useCheckOutForm(handleChanges)}
           />
         </label>
         <label>
@@ -55,20 +42,20 @@ const CheckoutForm = (props) => {
           <input
             name="address"
             value={values.address}
-            onChange={handleChanges}
+            onChange={useCheckOutForm(handleChanges)}
           />
         </label>
         <label>
           City:
-          <input name="city" value={values.city} onChange={handleChanges} />
+          <input name="city" value={values.city} onChange={useCheckOutForm(handleChanges)} />
         </label>
         <label>
           State:
-          <input name="state" value={values.state} onChange={handleChanges} />
+          <input name="state" value={values.state} onChange={useCheckOutForm(handleChanges)} />
         </label>
         <label>
           Zip:
-          <input name="zip" value={values.zip} onChange={handleChanges} />
+          <input name="zip" value={values.zip} onChange={useCheckOutForm(handleChanges)} />
         </label>
         <button>Checkout</button>
       </form>
